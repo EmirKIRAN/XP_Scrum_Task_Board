@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac8e92c0e7be4e95b51bc956e46795a1" Name="Diagram1">
+        <EntityTypeShape EntityType="taskBoardModel.tblDurum" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taskBoardModel.tblKart" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="taskBoardModel.tblPersonel" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taskBoardModel.tblProje" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="taskBoardModel.FK_tblKart_tblDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="taskBoardModel.FK_tblKart_tblPersonel" ManuallyRouted="false" />
+        <AssociationConnector Association="taskBoardModel.FK_tblKart_tblProje" ManuallyRouted="false" />
+        <AssociationConnector Association="taskBoardModel.FK_tblPersonel_tblProje" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

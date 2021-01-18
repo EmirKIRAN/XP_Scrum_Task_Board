@@ -1,0 +1,56 @@
+﻿@model task_board.Models.EntityFramework.tblKart
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 mb-5">
+    <hr>
+    <h3 class="text-center">MetroPublished KART DETAYLARI</h3><hr>
+    <div class="mt-5">
+        <div class="form-row">
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m=>m.kartID)
+              @Html.TextBoxFor(m=>m.kartID,new {@class="form-control",@readonly="true" })
+           </div>
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m => m.tarih)
+              @Html.TextBoxFor(m => m.tarih, new { @class = "form-control", @readonly = "true" })
+           </div>
+        </div>
+        <div class="form-row">
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m=>m.projeID)
+              @Html.TextBoxFor(m=>m.tblProje.projeAd,new {@class="form-control",@readonly="true" })
+           </div>
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m => m.personelID)
+              @Html.TextBoxFor(m => m.tblPersonel.personelAd, new { @class = "form-control", @readonly = "true" })
+           </div>
+        </div>
+        <div class="form-row">
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m=>m.tahminiSure)
+              @Html.TextBoxFor(m=>m.tahminiSure,new {@class="form-control",@readonly="true" })
+           </div>
+           <div class="form-group col-md-6">
+              @Html.LabelFor(m => m.gerceklesenSure)
+              @Html.TextBoxFor(m => m.gerceklesenSure, new { @class = "form-control", @readonly = "true" })
+           </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m=>m.aciklama)
+            @Html.TextAreaFor(m=>m.aciklama,new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m=>m.notlar)
+            @Html.TextAreaFor(m=>m.notlar,new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m=>m.işTakibi)
+            @Html.TextAreaFor(m=>m.işTakibi,new { @class = "form-control", @readonly = "true" })
+        </div>
+    </div>
+    <a href="/task/sil/@Model.kartID" class="btn btn-danger btn-block my-5">KARTI SİL</a>
+</div>
+

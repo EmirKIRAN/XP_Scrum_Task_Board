@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroPublished Task Board</title>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <script src="~/Scripts/script.js"></script>
+    @RenderSection("scripts", false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #7158E2;">
+        @Html.ActionLink("MetroPublished","Index",new { },new {@class= "navbar-brand" })
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navb">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <!-- <a href="/board" class="nav-link">Task Board</a> -->
+                    @Html.ActionLink("Task Board", "Index", new { }, new {@class="nav-link"})
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Personeller", "Index", "Task", new { @class = "nav-link disabled" })
+                </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <a class="btn btn-success" href="/task/yeni">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 0a2 2 0 0 0-2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4zm4.5 4.5a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z" />
+                    </svg>
+                    KART KAYDET
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+</body>
+</html>

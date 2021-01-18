@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="taskBoardModelStoreContainer" CdmEntityContainer="taskBoardEntities">
+    <EntitySetMapping Name="tblDurum">
+      <EntityTypeMapping TypeName="taskBoardModel.tblDurum">
+        <MappingFragment StoreEntitySet="tblDurum">
+          <ScalarProperty Name="durumID" ColumnName="durumID" />
+          <ScalarProperty Name="durumKod" ColumnName="durumKod" />
+          <ScalarProperty Name="durumAd" ColumnName="durumAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKart">
+      <EntityTypeMapping TypeName="taskBoardModel.tblKart">
+        <MappingFragment StoreEntitySet="tblKart">
+          <ScalarProperty Name="kartID" ColumnName="kartID" />
+          <ScalarProperty Name="personelID" ColumnName="personelID" />
+          <ScalarProperty Name="projeID" ColumnName="projeID" />
+          <ScalarProperty Name="durumID" ColumnName="durumID" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="tahminiSure" ColumnName="tahminiSure" />
+          <ScalarProperty Name="gerceklesenSure" ColumnName="gerceklesenSure" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="notlar" ColumnName="notlar" />
+          <ScalarProperty Name="işTakibi" ColumnName="işTakibi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPersonel">
+      <EntityTypeMapping TypeName="taskBoardModel.tblPersonel">
+        <MappingFragment StoreEntitySet="tblPersonel">
+          <ScalarProperty Name="personelID" ColumnName="personelID" />
+          <ScalarProperty Name="personelAd" ColumnName="personelAd" />
+          <ScalarProperty Name="personelSoyad" ColumnName="personelSoyad" />
+          <ScalarProperty Name="projeID" ColumnName="projeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProje">
+      <EntityTypeMapping TypeName="taskBoardModel.tblProje">
+        <MappingFragment StoreEntitySet="tblProje">
+          <ScalarProperty Name="projeID" ColumnName="projeID" />
+          <ScalarProperty Name="projeAd" ColumnName="projeAd" />
+          <ScalarProperty Name="baslangicTarihi" ColumnName="baslangicTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

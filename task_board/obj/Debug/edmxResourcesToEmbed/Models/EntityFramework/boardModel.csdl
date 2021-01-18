@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="taskBoardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblDurum">
+    <Key>
+      <PropertyRef Name="durumID" />
+    </Key>
+    <Property Name="durumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="durumKod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="durumAd" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblKart" Relationship="Self.FK_tblKart_tblDurum" FromRole="tblDurum" ToRole="tblKart" />
+  </EntityType>
+  <EntityType Name="tblKart">
+    <Key>
+      <PropertyRef Name="kartID" />
+    </Key>
+    <Property Name="kartID" Type="Int32" Nullable="false" />
+    <Property Name="personelID" Type="Int32" />
+    <Property Name="projeID" Type="Int32" />
+    <Property Name="durumID" Type="Int32" />
+    <Property Name="tarih" Type="DateTime" Precision="0" />
+    <Property Name="tahminiSure" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="gerceklesenSure" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="notlar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="işTakibi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblDurum" Relationship="Self.FK_tblKart_tblDurum" FromRole="tblKart" ToRole="tblDurum" />
+    <NavigationProperty Name="tblPersonel" Relationship="Self.FK_tblKart_tblPersonel" FromRole="tblKart" ToRole="tblPersonel" />
+    <NavigationProperty Name="tblProje" Relationship="Self.FK_tblKart_tblProje" FromRole="tblKart" ToRole="tblProje" />
+  </EntityType>
+  <EntityType Name="tblPersonel">
+    <Key>
+      <PropertyRef Name="personelID" />
+    </Key>
+    <Property Name="personelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personelAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="projeID" Type="Int32" />
+    <NavigationProperty Name="tblKart" Relationship="Self.FK_tblKart_tblPersonel" FromRole="tblPersonel" ToRole="tblKart" />
+    <NavigationProperty Name="tblProje" Relationship="Self.FK_tblPersonel_tblProje" FromRole="tblPersonel" ToRole="tblProje" />
+  </EntityType>
+  <EntityType Name="tblProje">
+    <Key>
+      <PropertyRef Name="projeID" />
+    </Key>
+    <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="projeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="baslangicTarihi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tblKart" Relationship="Self.FK_tblKart_tblProje" FromRole="tblProje" ToRole="tblKart" />
+    <NavigationProperty Name="tblPersonel" Relationship="Self.FK_tblPersonel_tblProje" FromRole="tblProje" ToRole="tblPersonel" />
+  </EntityType>
+  <Association Name="FK_tblKart_tblDurum">
+    <End Role="tblDurum" Type="Self.tblDurum" Multiplicity="0..1" />
+    <End Role="tblKart" Type="Self.tblKart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDurum">
+        <PropertyRef Name="durumID" />
+      </Principal>
+      <Dependent Role="tblKart">
+        <PropertyRef Name="durumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKart_tblPersonel">
+    <End Role="tblPersonel" Type="Self.tblPersonel" Multiplicity="0..1" />
+    <End Role="tblKart" Type="Self.tblKart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPersonel">
+        <PropertyRef Name="personelID" />
+      </Principal>
+      <Dependent Role="tblKart">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKart_tblProje">
+    <End Role="tblProje" Type="Self.tblProje" Multiplicity="0..1" />
+    <End Role="tblKart" Type="Self.tblKart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProje">
+        <PropertyRef Name="projeID" />
+      </Principal>
+      <Dependent Role="tblKart">
+        <PropertyRef Name="projeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPersonel_tblProje">
+    <End Role="tblProje" Type="Self.tblProje" Multiplicity="0..1" />
+    <End Role="tblPersonel" Type="Self.tblPersonel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProje">
+        <PropertyRef Name="projeID" />
+      </Principal>
+      <Dependent Role="tblPersonel">
+        <PropertyRef Name="projeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="taskBoardEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblDurum" EntityType="Self.tblDurum" />
+    <EntitySet Name="tblKart" EntityType="Self.tblKart" />
+    <EntitySet Name="tblPersonel" EntityType="Self.tblPersonel" />
+    <EntitySet Name="tblProje" EntityType="Self.tblProje" />
+    <AssociationSet Name="FK_tblKart_tblDurum" Association="Self.FK_tblKart_tblDurum">
+      <End Role="tblDurum" EntitySet="tblDurum" />
+      <End Role="tblKart" EntitySet="tblKart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKart_tblPersonel" Association="Self.FK_tblKart_tblPersonel">
+      <End Role="tblPersonel" EntitySet="tblPersonel" />
+      <End Role="tblKart" EntitySet="tblKart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKart_tblProje" Association="Self.FK_tblKart_tblProje">
+      <End Role="tblProje" EntitySet="tblProje" />
+      <End Role="tblKart" EntitySet="tblKart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPersonel_tblProje" Association="Self.FK_tblPersonel_tblProje">
+      <End Role="tblProje" EntitySet="tblProje" />
+      <End Role="tblPersonel" EntitySet="tblPersonel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

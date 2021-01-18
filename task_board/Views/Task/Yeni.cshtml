@@ -1,0 +1,57 @@
+﻿@model task_board.ViewModels.CardFormViewModel
+@{
+    ViewBag.Title = "Yeni";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 mb-5">
+    <hr>
+    <h3 class="text-center">MetroPublished KART EKLEME ALANI</h3><hr>
+    @using (Html.BeginForm("Kaydet", "Task", FormMethod.Post, new { @class = "mt-5" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(m => m.Kart.kartID)
+                @Html.TextBoxFor(m => m.Kart.kartID, new { @class = "form-control", placeholder = "Kart numarası...", type = "number" })
+                @Html.ValidationMessageFor(m => m.Kart.kartID)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(m => m.Kart.projeID)
+                @Html.DropDownListFor(m => m.Kart.projeID, new SelectList(Model.Projeler, "projeID", "projeAd"), "Proje Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Kart.projeID)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(m => m.Kart.personelID)
+                @Html.DropDownListFor(m => m.Kart.personelID, new SelectList(Model.Personeller, "personelID", "personelAd"), "Teknik Uzman Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Kart.personelID)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(m => m.Kart.gerceklesenSure)
+                @Html.TextBoxFor(m => m.Kart.gerceklesenSure, new { @class = "form-control", placeholder = "X SAAT", type = "text" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Kart.aciklama)
+            @Html.TextAreaFor(m => m.Kart.aciklama, new { @class = "form-control", rows = "4" })
+            @Html.ValidationMessageFor(m => m.Kart.aciklama)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Kart.notlar)
+            @Html.TextAreaFor(m => m.Kart.notlar, new { @class = "form-control", rows = "4" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Kart.işTakibi)
+            @Html.TextAreaFor(m => m.Kart.işTakibi, new { @class = "form-control", rows = "4" })
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">KAYDET</button>
+    }
+</div>
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }
+
